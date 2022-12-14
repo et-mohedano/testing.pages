@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h3>Gobierno del Estado de Hidalgo</h3>
+    </div>
+
+    <div class="main-container">
+      <div class="title-container">
+
+        <div class="img">
+          <img src="./hidalgo.png" alt="">
+        </div>
+
+        <div class="text">
+          <h2 class="title">Análisis de Percepción Ciudadana</h2>
+          <br>
+          <h3 class="period">09 de Diciembre de 2022</h3>
+        </div>
+
+      </div>
+
+      <h3 class="description-title">Descripción </h3>
+      <p class="v21_29"
+        >El reporte de escucha social aplicado a temáticas populares parte de la necesidad de conocer la perspectiva ciudadana desde redes sociales acerca de los temas de interés que se encuentran con mayor redundancia. Esta herramienta comprende un análisis de información partiendo del proceso de scraping web y técnicas supervisadas de clasificación y predicción de clases, el flujo se muestra a continuación y posteriormente se describe cada una de las técnicas.
+      </p>
+      
+      <h3 class="v21_30">Nube de Palabras</h3>
+
+      <p class="v21_50">
+        Para la creación de una nube de palabras se utilizo la libreria WordCloud de Python en su versión 1.5, en la cual se lematiza el texto que se recupera en el proceso anterior y se filtra mediante una lista de “Stopwords”, la cual contiene palabras que se tiene que excluir y posteriormente se construye la gráfica con respecto al valor acumulado que la obtención de palabras centrales de la lematización relacionando el tamaño de la palabra y sus frecuencias.
+      </p>
+
+      <h3 class="v21_43">Frecuencia de palabras clave</h3>
+      <p class="v21_50">
+        Para el cálculo de las frecuencias que se contabilizan por cada una de las palabras clave de utiliza la librería de spacy con el paquete de idioma “es_core_news_md”, en donde a partir de la lematización se puede extraer la frase principal de cada opinión y posteriormente la palabra clave de esa frase. Al finalizar este proceso se recuperan las distintas palabras obtenidas y se verifica si hay coincidencias de escritura a través de calcular la distancia de Levenshtein mediante la librería de hermetrics en Python para agruparlas en un diccionario de frecuencias acumuladas y posteriormente graficarlo.
+      </p>
+
+      <div class="formula">
+        <img src="./formula.png" alt="">
+      </div>
+
+      
+      <h3 class="v21_49">Análisis de setimientos</h3>
+      <p class="v21_32">
+        El análisis de sentimiento es el estudio de las formas de comunicación que tiene por objeto comprender la intencionalidad de un mensaje y mejorar la comprensión de su contenido. Estos análisis permiten interpretar adecuadamente la información y buscar la empatía con los interlocutores.<br>
+        Dentro del proceso que describe el análisis de los comentarios recuperados de la opinión pública se implementa una técnica de clasificación de sentimientos mediante la implementación de un modelo de redes neuronales tipo transformer que aprende contexto y, por lo tanto, significado mediante el seguimiento de relaciones en datos secuenciales.<br>
+        El modelo se encuentra entrenado con los siguientes grupos de datos:
+      </p>
+      
+      <ul class="v21_42">
+        <li>TASS Dataset license</li>
+        <li>SEMEval 2017 Dataset license</li>
+        <li>LinCE Datasets</li>
+      </ul>
+      
+      <p class="v21_44">
+        La red neuronal recibe como señal de entrada el valor de cada oración dentro de la opinión pública recuperada y se predice la polarización que refleja la intención sentimental, si tiende a ser negativa, positiva o neutral.
+        Lo anterior mencionado se incorporó por medio de la librería de python pysentimiento.<br>
+      </p>
+      
+      <div class="transformers">
+        <img src="./transformers.jpg" alt="">
+      </div>
+      
+      
+      <h3 class="v21_31">Legibilidad</h3>
+      <p class="v21_56">
+        Para medir el nivel de comprensión que tienen los textos analizados provenientes de la opinión pública se implementó la prueba de Flesch-Kincaid. La prueba a través de un cálculo que toma en cuenta la estructura  otorga al texto un valor dentro de una escala de puntos. Cuanto más elevado sea el resultado, más fácil será comprender el documento.
+      </p>
+      
+      <p class="v21_52">
+        En promedio se busca un resultado comprendido entre 60 y 70 aproximadamente para optimizar la comprensión y correcta lectura de cualquier texto, la fórmula que se integró para la obtención de dicho score es la siguiente:
+
+      </p>
+      
+      <span class="v21_35">Referencias </span>
+      
+      <blockquote class="v21_36">
+        <ul>
+          <li>Hammond, M. (2022, 29 septiembre). Qué es el análisis de sentimiento y 11 herramientas para realizarlo. https://blog.hubspot.es/service/analisis-de-sentimiento</li>
+          <li>Merritt, R. (2022, 19 abril). ¿Qué Es un Modelo Transformer? | Blog de NVIDIA. Blog oficial de NVIDIA Latino América. https://la.blogs.nvidia.com/2022/04/19/que-es-un-modelo-transformer/</li>
+          <li>Mueller. (2018). WordCloud for Python documentation — wordcloud 1.8.1 documentation. https://amueller.github.io/word_cloud/</li>
+          <li>Peréz. (2021, julio). GitHub - pysentimiento/pysentimiento: A Python multilingual toolkit for Sentiment Analysis and Social NLP tasks. GitHub. https://github.com/pysentimiento/pysentimiento</li>
+          <li>Ward. (2022, 15 marzo). textstat. PyPI. https://pypi.org/project/textstat/</li>
+          <li>Yuncal, A. (2019, 26 junio). ¿Sabes qué es en SEO el test Flesch-Kincaid? https://www.linkedin.com/pulse/sabes-qu%C3%A9-es-en-seo-el-test-flesch-kincaid-antonio-yuncal/?originalSubdomain=es</li>
+      </ul>
+
+      </blockquote>
+
+      <div class="v21_48"></div>
+      <div class="v21_53"></div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header {
+    width: 100%;
+    height: 5rem;
+    font-family: Inter;
+    font-weight: 200;
+    font-size: 28px;
+    text-align: center;
+    color: #fff;
+    background: rgba(187, 148, 96, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-container {
+    padding: 3rem 7rem 7rem 7rem;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    color: rgba(134, 34, 57, 1);
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 40px;
+  }
+
+  .period, 
+  .description-title {
+    color: rgba(134, 34, 57, 1);
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+  }
+
+  .formula {
+    text-align: center;
+  }
+
+  .formula img {
+    height: 15rem;
+    object-fit: contain;
+    max-width: 650px;
+  }
+  .transformers {
+    text-align: center;
+  }
+
+  .transformers img {
+    height: 15rem;
+    object-fit: contain;
+    height: 450px;
+  }
+
+  .v21_22 {
+    width: 100%;
+    height: 4830px;
+    background: rgba(249, 246, 241, 1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v21_23 {
+    width: 100%;
+    height: 100px;
+    background: rgba(187, 148, 96, 1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v21_24 {
+    width: 480px;
+    color: rgba(255, 255, 255, 1);
+    /*  */
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_25 {
+    width: 657px;
+    color: rgba(101, 101, 101, 1);
+    /*  */
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 40px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_26 {
+    width: 391px;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_27 {
+    width: 185px;
+    color: url("../images/v21_27.png");
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_28 {
+    width: 283px;
+    height: 290px;
+    background: url("../images/v21_28.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    
+    overflow: hidden;
+  }
+  .v21_29 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_30 {
+    width: 272px;
+    color: rgba(134, 34, 57, 1);
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_43 {
+    width: 449px;
+    color: rgba(134, 34, 57, 1);
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_31 {
+    width: 170px;
+    color: rgba(134, 34, 57, 1);
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_32 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_42 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_33 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_44 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_49 {
+    width: 358px;
+    color: rgba(134, 34, 57, 1);
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_50 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_51 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_54 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_55 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_56 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_52 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_45 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_46 {
+    width: 100%;
+    color: rgba(101, 101, 101, 1);
+    
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_35 {
+    width: 184px;
+    color: rgba(134, 34, 57, 1);
+    
+    font-family: Inter;
+    font-weight: Semi Bold;
+    font-size: 32px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v21_36 {
+    color: rgba(101, 101, 101, 1);
+    font-family: Inter;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: justified;
+  }
+  .v21_48 {
+    width: 302px;
+    height: 241px;
+    background: url("../images/v21_48.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    
+    overflow: hidden;
+  }
+  .v21_53 {
+    width: 302px;
+    height: 241px;
+    background: url("../images/v21_53.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    
+    overflow: hidden;
+  }
+</style>
